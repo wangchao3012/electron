@@ -1,0 +1,348 @@
+.y-form.ivu-form {
+    padding: 18px 22px 0;
+    .ivu-form-item-label {
+      padding: 10px 6px 10px 0;
+      color: #9da1a9;
+    }
+    &:first-child {
+      background-color: #221f20;
+    }
+    .ivu-form-item{
+        margin-bottom: 3px;
+    }
+    .ivu-form .ivu-form-item-label{
+        padding: 10px 6px 10px 0;
+        color: #9da1a9;
+      }
+      .ivu-input-small{
+        height: 22px; 
+      }
+  }  
+.ivu-input-type{ 
+//  --------------- vv--------------
+    &.y-dark>input{ 
+        background-color: #565c65;
+        color: #9da1a9;
+        border: 0;
+        caret-color: #fff; 
+        &:focus,&:hover{
+            border-color: #2d58ce;
+        }
+    }
+// --------------vv-------------
+    &.y-orange>input{ 
+        background-color: #242930;
+        color: #9da1a9;
+        border-color: #ca712a;
+        caret-color: #fff; 
+        &:focus,&:hover{
+            border-color: #ca712a;
+        }
+    }
+    
+    &.y-blue>input{ 
+        background-color: #242930;
+        color: #9da1a9;
+        border-color: #2d58ce;
+        caret-color: #fff; 
+        &:focus,&:hover{
+            border-color: #2d58ce;
+        }
+    }
+}
+.ivu-select {
+    // -------------vv--------------
+    &.y-dark {
+        .ivu-input-small{ 
+            background-color: #242930;
+            color: #9da1a9;
+            border-color: #9da1a9;  
+            // border: solid 1px #9da1a9;
+            caret-color: #fff; 
+            &:focus,&:hover{
+                border-color: #9da1a9;
+            }
+        }
+        .ivu-select-dropdown{
+            background-color: #242930; 
+            border: solid 1px #9da1a9;
+            color: #828282;
+            .ivu-select-item{
+                color: #828282;
+                transition:none;
+            }
+             .ivu-select-item:hover{
+                background-color: #9da1a9;
+                color: #d0d0d4;
+             }
+        } 
+    }
+    // -------------vv--------------
+    &.y-orange {
+        .ivu-input-small{ 
+            background-color: #242930;
+            color: #9da1a9;
+            border-color: #ca712a;  
+            caret-color: #fff; 
+            &:focus,&:hover{
+                border-color: #ca712a;
+            }
+        }
+        .ivu-select-dropdown{
+            background-color: #242930; 
+            border: solid 1px #ca712a;
+            color: #828282;
+            .ivu-select-item{
+                color: #828282;
+                transition:none;
+            }
+             .ivu-select-item:hover{
+                background-color: #ca712a;
+                color: #d0d0d4;
+             }
+             .ivu-select-item-selected, 
+            .ivu-select-item-selected:hover{  
+                background-color: #ca712a;
+                color: #d0d0d4;
+            }
+        }
+        
+    }
+    &.y-blue {
+        .ivu-input-small{  
+            background-color: #242930;
+            color: #9da1a9;
+            border-color: #2d58ce;
+            caret-color: #fff; 
+            &:focus,&:hover{ 
+                border-color: #2d58ce; 
+            }
+        }
+        .ivu-select-dropdown{
+            background-color: #242930; 
+            border: solid 1px #2d58ce;
+            color: #828282;
+            .ivu-select-item{
+                color: #828282;
+                transition:none;
+            }
+             .ivu-select-item:hover{
+                background-color: #2d58ce;
+                color: #d0d0d4;
+             }
+             .ivu-select-item-selected, 
+            .ivu-select-item-selected:hover{  
+                background-color: #2d58ce;
+                color: #d0d0d4;
+            }
+        }
+    }
+   
+}
+.ivu-select 
+{
+    &.y-orange{
+        .ivu-select-selection{
+            border: solid 1px #ca712a;
+        }
+    }
+    &.y-blue{
+        .ivu-select-selection{
+            border: solid 1px #2d58ce;
+        }
+    }
+}
+
+.ivu-input-number{ 
+    &.y-orange
+    {
+        border-color: #ca712a;
+        caret-color: #fff; 
+        &:focus,&:hover{
+            border-color: #ca712a;
+        }
+        width: 100%;
+        >div{ 
+            >input{ 
+                background-color: #242930;
+                color: #9da1a9;
+                
+            } 
+        }
+        .ivu-input-number-handler-wrap {
+            background: transparent;
+            border-color: #ca712a;
+            .ivu-input-number-handler-down{
+                border-color: #ca712a;
+            }
+        }
+    }
+    
+    &.y-blue
+    {
+        border-color: #2d58ce;
+        caret-color: #fff; 
+        &:focus,&:hover{
+            border-color: #2d58ce;
+        }
+        width: 100%;
+        >div{ 
+            >input{ 
+                background-color: #242930;
+                color: #9da1a9;
+            } 
+        }
+        .ivu-input-number-handler-wrap {
+            background: transparent;
+            border-color: #2d58ce;
+            .ivu-input-number-handler-down{
+                border-color: #2d58ce;
+            }
+        }
+    }
+}
+.y-block{ 
+    >.ivu-form-item-content{ 
+        width: 100%;
+        margin: 0 !important; 
+        >.ivu-radio-group{
+            width: 100%;
+            display: flex;  
+            >label{
+                flex: 1; 
+                margin-right: 1px;
+                padding: 0; 
+                text-align: center;
+                background: #3d424b;
+                color: #d0d0d4;
+                border: none !important;
+                font-weight: normal;
+                user-select:none;
+                &.ivu-radio-wrapper-checked{
+                    color: #d0d0d4;
+                    border: none ;
+                    box-shadow:none; 
+                }
+                &:hover{
+                    color: #d0d0d4;
+                }
+            }
+        }
+        .y-orange .ivu-radio-group-item.ivu-radio-wrapper-checked{ 
+            background-color: #ca712a;
+        }
+        .y-blue .ivu-radio-group-item.ivu-radio-wrapper-checked{ 
+            background-color: #2d58ce;
+        }
+    }
+}
+
+ .ivu-radio-group{
+     >label.ivu-radio-wrapper{
+        border: none !important;
+        margin-right: 1px;
+        padding: 0; 
+        text-align: center;
+        background: #3d424b;
+        font-weight: normal;
+        color: #d0d0d4; 
+        user-select:none;
+        &.ivu-radio-wrapper-checked{
+            color: #d0d0d4;
+            border: none ;
+            box-shadow:none; 
+        }
+        &:hover{
+            color: #d0d0d4;
+        }
+     }  
+     &.y-black{
+        background-color: #22252b;
+        .ivu-radio-group-item.ivu-radio-wrapper-checked{ 
+            background-color:  #565c65;
+        }
+     }
+ }
+
+
+// -----------vv--------------------
+ // 顶部form
+.tab-header {
+    height: 22px;
+    line-height: 22px;
+    background-color: #2c3039;
+    }
+.y-dark .ivu-form-item{
+            .ivu-form-item-label{
+                height: 22px;
+                line-height: 22px;
+                margin: 0;
+                padding: 0;
+                color: #d0d0d4;
+            }
+      }
+.y-dark .ivu-input-wrapper{
+          .ivu-input-small{
+              height:20px;
+              width:100px;
+              min-width: 100px;
+              margin-bottom:1px;
+          }
+}
+.y-dark .ivu-btn.ivu-btn-small {
+          height: 20px;
+          width:80px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding:0;
+     }
+.y-dark.ivu-select .ivu-select-selection{
+      background-color: #565c65;
+      height:20px;
+      line-height: 20px;
+      .ivu-select-placeholder{
+        height:20px;
+        line-height: 18px;
+      }
+    }
+ .y-dark .ivu-form-item-content{
+     line-height:22px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+   }
+ 
+
+.formsearch{
+    width: 70%;
+    height: 22px;
+    overflow: hidden;
+    line-height: 22px;
+    position: absolute;
+    left:150px;
+    top:50%;
+    transform: translateY(-50%);
+    .y-form.ivu-form{
+      height: 22px;
+      line-height: 22px;
+      position: absolute;
+      left:0px;
+      top:0px;
+      padding:0;
+      background-color: #1e2127;
+      .ivu-input{
+        padding: 0;
+      }
+    }
+}
+
+// demo 撤销xtpid搜索框
+.y-search .ivu-input{
+    border: 1px solid #1e2127 !important;
+    background-color: #565c65 !important;
+    width: 120px;
+}
+.y-search.y-dark .ivu-input-wrapper .ivu-input-small{
+    width: 120px;
+}

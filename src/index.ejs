@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html style="height: 100%;background-color: #000">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <title>XTP客户端</title>
+  <% if (htmlWebpackPlugin.options.nodeModules) { %>
+    <!-- Add `node_modules/` to global paths so `require` works properly in development -->
+    <script>
+      require('module').globalPaths.push('<%= htmlWebpackPlugin.options.nodeModules.replace(/\\/g, '\\\\') %>')
+    </script>
+    <% } %>
+</head>
+<!-- class="skin-blue layout-top-nav fixed sidebar-mini" style="height: 100%;background-color: #000" -->
+
+<body class="skin-dark">
+  <div id="app" class="wrapper"></div>
+  <!-- Set `__static` path to static files in production -->
+  <script>
+      // if (process.env.NODE_ENV !== 'development') window.__static = require('path').join(__dirname, '/static').replace(/\\/g, '\\\\')
+  </script>
+
+  <!-- webpack builds are automatically injected -->
+</body>
+
+</html>

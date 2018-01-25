@@ -1,0 +1,180 @@
+.main-sidebar, .left-side{
+    width: 60px;
+}
+.ivu-form .ivu-form-item-label{
+    color: #9da1a9;
+}
+.ivu-input{
+    background-color: #242930;
+    color: #ccc;
+    border: solid 1px #9da1a9;
+}
+.sidebar-menu > li > a > .fa, .sidebar-menu > li > a > .glyphicon, .sidebar-menu > li > a > .ion{
+    width: 100%;
+    display: block;
+    font-size: 24px;
+}
+.sidebar-menu, .main-sidebar .user-panel, .sidebar-menu > li.header{
+    white-space: inherit;
+}
+.layout-top-nav .content-wrapper, .layout-top-nav .right-side, .layout-top-nav .main-footer{
+    margin-left: 60px;
+}
+
+.navbar-nav{
+    float: left;
+    margin: 0;
+}
+.navbar-nav > li {
+    float: left;
+}
+.navbar-nav > li > a {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.navbar-nav > .user-menu .user-image {
+    float: left;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-top: -2px;
+}
+.skin-blue .main-header .navbar{
+    background-color: #30353f;
+}
+.skin-blue .sidebar-menu > li > a{
+    border: none;
+}
+.skin-blue .sidebar-menu > li > a{
+    border-left:none;
+    text-align: center;
+    font-size: 12px;
+} 
+.sidebar-menu > li > a{ 
+    padding: 8px;
+}
+.fixed .content-wrapper, .fixed .right-side{
+    padding-top: 50px;
+}
+.fixed .content-wrapper, .fixed .right-side { 
+    background-color: #000;
+    height: 100%;
+}
+.navbar-nav > .user-menu > .dropdown-menu {
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    padding: 1px 0 0 0;
+    border-top-width: 0;
+    width: 280px;
+}
+.content{
+    padding: 0;
+    background-color: #000;
+    height: calc(100% - 30px);
+    >.btn-group-vertical{
+        height: 100%;
+        background-color: #22252b;
+        float: left;
+    }
+    >.row{
+        margin-left: 82px;
+        > div{
+            padding: 0;
+            border-radius: 0;
+        }
+    }
+}
+.panel{
+    border-radius: 0;
+    background-color: #000;
+    margin: 0px;
+    .panel-black{
+
+    }
+    .panel-heading{
+        padding: 5px;
+        background-color: #2c3039;
+        >i.fa{
+            line-height: 24px;
+        }
+    }
+    >.panel-body{
+        padding: 2px 0px;
+        .y-table > .y-cell{
+            padding: 10px;
+        }
+    }
+}
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td{
+    border-top: 1px solid #2c3039; 
+}
+.ivu-select{
+    background-color: #30353f;
+    color: #9da1a9;
+    .ivu-select-selection{
+        background-color: #30353f;
+        border: 1px solid #2c3039;
+    }
+}
+.ivu-form-item {
+    margin-bottom: 0px; 
+}
+
+.nav.nav-tabs{
+    background-color: #2c3039;
+    color: #c2c4d2;
+    border:none;
+    > li{
+        border-right: solid 1px #000;
+        &.active{
+            background-color: #565c65;
+            color: #ccc;
+        }
+        > a{
+            margin: 0;
+            padding: 2px 10px;
+            border-radius: 2px 2px 0 0;
+            color: #c2c4d2;
+            border: none;
+        }
+        &.active > a{
+            background-color: #565c65;
+            color: #ccc;
+            &:hover,&:focus{
+                background-color: #565c65;
+                color: #ccc;
+                border: none;
+            }
+        }
+        a{
+            &:hover,&:focus{
+                background-color: #565c65;
+                color: #ccc;
+                border: none;
+            }
+        }
+    }
+}
+
+.y-table {
+    width: 100%;
+    display: table;
+}
+
+.y-table>.y-cell {
+    display: table-cell;
+    vertical-align: top;
+}
+.y-table>.y-row {
+    display: table-row;
+}
+@media (max-width: 767px) {
+    .main-sidebar, .left-side {
+          -webkit-transform:  none;  
+          transform: none;  
+    }
+    .main-sidebar, .left-side {
+        padding-top: 50px;
+    }
+}
