@@ -37,7 +37,18 @@ install:
 script:
 #- xvfb-maybe node_modules/.bin/karma start test/unit/karma.conf.js
 #- yarn run pack && xvfb-maybe node_modules/.bin/mocha test/e2e
-- yarn run build
+  - yarn run build
+after_script:
+  - cd ./public
+  - git init
+  - git config user.name "wangchao3012"
+  - git config user.email "wangchao3012@163.com"
+  - git add .
+  - git commit -m "Update docs"
+  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
 branches:
   only:
   - master
+env:
+ global:
+   - GH_REF: github.com/wangchao3012/electron.git
