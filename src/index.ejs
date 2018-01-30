@@ -6,7 +6,7 @@
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <title>XTP客户端</title>
   <% if (htmlWebpackPlugin.options.nodeModules) { %>
-    <!-- Add `node_modules/` to global paths so `require` works properly in development -->
+    <!-- Add `node_modules/` to global paths so `require`  works properly in development -->
     <script>
       require('module').globalPaths.push('<%= htmlWebpackPlugin.options.nodeModules.replace(/\\/g, '\\\\') %>')
     </script>
