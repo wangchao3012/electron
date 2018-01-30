@@ -50,29 +50,33 @@
           </div>
         </div>
        </div>
-     <div class="content-body-right">
-       <div class="tab-content">
-          <div class="tab-top">
-               <Form  align="center"  class="y-dark"  inline>
-                  <FormItem label="ETF代码：">
-                      <Input class="y-dark" size="small"  placeholder=""></Input>
-                  </FormItem>
-                  <FormItem label="市场：">
-                    <Select class="y-dark"  style="width:100px" size="small">
-                        <Option value="xjwt">全部</Option>
-                        <Option value="xjwt" >限价委托</Option>
-                    </Select>
-                  </FormItem>
-                  <FormItem>
-                      <Button type="primary" size="small" style="width:60px">查询</Button>
-                  </FormItem>
-                </Form>
+      <div class="content-body-right">
+          <div class="tab-wrapper">
+              <div class="tab-bar">
+                <div style="min-width:400px">
+                    <span class="padding-left-20">ETF:</span>
+                    <Form  align="center"  class="y-dark pull-right"  inline>
+                    <FormItem label="ETF代码：">
+                        <Input class="y-dark" size="small"  placeholder=""></Input>
+                    </FormItem>
+                    <FormItem label="市场：">
+                      <Select class="y-dark"  style="width:100px" size="small">
+                          <Option value="xjwt">全部</Option>
+                          <Option value="xjwt" >限价委托</Option>
+                      </Select>
+                    </FormItem>
+                    <FormItem>
+                        <Button type="primary" size="small" style="width:60px">查询</Button>
+                    </FormItem>
+                  </Form>
+                  </div>
+              </div>
+              <div class="tab-table">
+                  <Table class="i-table" :width='width' :height="height" :columns="columns8" 
+                  :data="data7" size="small" :border='true' ref="table"></Table>
+              </div>
           </div>
-          <div class="tab-bottom">
-            <Table class="i-table" :width='width' :height="height" :columns="columns8" :data="data7" size="small" :border='true' ref="table"></Table>
-          </div> 
-       </div>
-     </div>
+      </div>
    </div>
 </template> 
 <style scoped>

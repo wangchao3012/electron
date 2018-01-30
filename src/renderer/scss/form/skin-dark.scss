@@ -315,12 +315,12 @@
  
 
 .formsearch{
-    width: 70%;
+    // width: 70%;
     height: 22px;
     overflow: hidden;
     line-height: 22px;
     position: absolute;
-    left:150px;
+    right:230px;
     top:50%;
     transform: translateY(-50%);
     .y-form.ivu-form{

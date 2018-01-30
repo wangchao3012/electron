@@ -1,23 +1,20 @@
 <template>
     <div class="content-body-right">
         <div class="tab-wrapper">
-            <div class="tab-bar">
+            <div class="tab-bar padding-left-20 lh-22">
                实时行情
             </div>
             <div class="tab-table">
-                <Table class="i-table" :width='width' :height="height" :columns="columns" :data="tData" size="small" :border='true' ref="table"></Table>
+                <Table class="i-table" v-if="tData.length" :width='width' :height="height"
+                 :columns="columns" :data="tData" size="small" :border='true' ref="table"></Table>
             </div>
         </div>
     </div>
 </template>
-<style lang="scss" scoped>
-   .tab-bar{
-     padding-left: 20px;
-   }
-</style> 
-
 <script>
+import {changetable} from "../../../../mixins/mixin";
 export default {
+  mixins:[changetable],
   data() {
     return {
       data1: {v1:100 ,v2:200 ,v3:300},
@@ -95,6 +92,7 @@ export default {
       tData: []
     };
   },
+  
   mounted: function() {
     var self = this;
     self.$nextTick(function() {

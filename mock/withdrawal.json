@@ -1,0 +1,42 @@
+{
+    "status": "ok",
+    "message": "成功获取数据",
+    "result":[
+        {
+            "index": 0,
+            "xtpid": 0,
+            "cancelxtpid": 7302,
+            "errorCode": 5627,
+            "errorMessage": 1563
+        },
+        {
+            "index": 1,
+            "xtpid": 0,
+            "cancelxtpid": 7302,
+            "errorCode": 5627,
+            "errorMessage": 1563
+        },
+        {
+            "index": 2,
+            "xtpid": 0,
+            "cancelxtpid": 7302,
+            "errorCode": 5627,
+            "errorMessage": 1563
+        },
+        {
+            "index": 3,
+            "xtpid": 0,
+            "cancelxtpid": 7302,
+            "errorCode": 5627,
+            "errorMessage": 1563
+        },
+        {
+            "index": 4,
+            "xtpid": 0,
+            "cancelxtpid": 7302,
+            "errorCode": 5627,
+            "errorMessage": 1563
+        }
+    ]
+}
+  

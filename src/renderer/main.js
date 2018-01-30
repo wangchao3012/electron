@@ -14,7 +14,10 @@ Vue.http = Vue.prototype.$http = axios
 import VueSocketio from 'vue-socket.io';
 import socketio from 'socket.io-client';
 // Vue.use(VueSocketio, socketio('http://10.25.26.190:8081'), store);
-Vue.use(VueSocketio, socketio('http://10.25.26.231:8088/trade/user'), store);
+// Vue.use(VueSocketio, socketio('http://10.25.26.231:8088/trade/user'), store);
+
+Vue.use(VueSocketio, socketio('http://10.25.26.190:8081/trade/user'), store);
+
 
 // Vue.use(VueSocketio, socketio('http://127.0.0.1:11111'), store);
 

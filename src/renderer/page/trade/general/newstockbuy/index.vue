@@ -3,7 +3,8 @@
         <div class="tab-wrapper">
             <div class="tab-bar">
                <div style="min-width:400px">
-                  <Form :model="formItem" class="y-dark" inline>
+                  <span class="padding-left-20 lh-22">新股申购:</span>    
+                  <Form :model="formItem" class="y-dark pull-right" inline>
                     <FormItem>
                         <Button type="primary" size="small">一键申购</Button>
                     </FormItem>
@@ -11,14 +12,17 @@
                 </div>
             </div>
             <div class="tab-table">
-                <Table class="i-table" :width='width' :height="height" :columns="columns" 
+                <Table class="i-table" v-if="tdata.length" :width='width' :height="height" :columns="columns" 
                 :data="tdata" size="small" :border='true' ref="table"></Table>
             </div>
         </div>
     </div>
 </template>
 <script>
+import {changetable} from "../../../../mixins/mixin";
+
 export default {
+  mixins:[changetable],
   data() {
     return {
       modal: false,

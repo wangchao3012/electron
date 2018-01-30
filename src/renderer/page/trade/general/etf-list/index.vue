@@ -3,7 +3,8 @@
         <div class="tab-wrapper">
             <div class="tab-bar">
                <div style="min-width:400px">
-                  <Form :model="formItem" class="y-dark" inline>
+                  <span class="padding-left-20 lh-22">ETF清单</span>
+                  <Form :model="formItem" class="y-dark pull-right" inline>
                     <FormItem label="ETF代码: ">
                         <Input v-model="formItem.xtpid" class="y-dark"  size="small" placeholder="" autofocus></Input>
                     </FormItem>

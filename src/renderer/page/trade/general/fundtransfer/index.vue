@@ -33,7 +33,7 @@
             </Form>
         </Col>
         <Col class="flex-1">
-              <Table class="i-table" :width='width' :height="height" :columns="columns8" :data="data7" size="small" :border='true' ref="table"></Table>
+              <Table class="i-table" v-if="data7.length" :width='width' :height="height" :columns="columns8" :data="data7" size="small" :border='true' ref="table"></Table>
         </Col>
      </Row>
   </div>
@@ -61,6 +61,7 @@
 
 <script>
 import socketio from "socket.io-client";
+import {changetable} from "../../../../mixins/mixin";
 export default {
   data() {
     return {
@@ -160,6 +161,7 @@ export default {
       console.log(data);
     }
   },
+  mixins:[changetable],
   mounted: function() {
     var self = this;
     console.log("socketId::", this.$socket.id);
@@ -178,7 +180,6 @@ export default {
         }
       }, 100);
 
-    
       self.autoTableSize();
       window.addEventListener(
         "resize",
@@ -195,7 +196,6 @@ export default {
     },
     buy() {
       let self = this; 
-
       // self.$socket.close();
       // self.$socket.connect({
       //   query: {
@@ -223,16 +223,9 @@ export default {
     },
     autoTableSize() {
       var self = this;
-      // $(".y-table").width(
-      //   $(".y-table")
-      //     .parent()
-      //     .width() - 5
-      // );
-      //  $(".y-table").height($(".y-table").parent().height() - 5);
       self.width = $(".i-table")
         .parent()
         .width();
-
       self.height =
         $(".i-table")
           .parent()

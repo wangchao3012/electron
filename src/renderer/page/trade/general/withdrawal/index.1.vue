@@ -3,9 +3,20 @@
         <div class="tab-wrapper">
             <div class="tab-bar">
                <div style="min-width:400px">
-                  <Form :model="formItem" class="y-dark" inline>
+                  <Form class="y-search y-dark" inline>
                     <FormItem label="XTP ID: ">
-                        <Input v-model="formItem.xtpid" class="y-dark"  size="small" placeholder="" autofocus></Input>
+                         <AutoComplete
+                        v-model="value1"
+                        @on-change="requestdata"
+                        class="y-dark"  size="small"
+                        style="width:120px">
+                            <div>
+                                <Option v-for="option in search" :value="option.code" :key="option.code">
+                                    <span class="">{{ option.code }}</span>
+                                    <span class="">{{ option.name }}</span>
+                                </Option>
+                            </div>
+                        </AutoComplete> 
                     </FormItem>
                     <FormItem>
                         <Button type="primary" size="small">撤单</Button>
@@ -21,18 +32,37 @@
     </div>
 </template>
 <script>
+import axios from "axios"
+import { setTimeout } from 'timers';
+
+// import {changetable} from "../../../../mixins/mixin";
+
 export default {
+    computed: {
+       search(){
+            return this.data1.filter(v => v.name.indexOf(this.value1) != -1) ||this.data1.filter(v => v.code.indexOf(this.value1) != -1);
+        }
+    },
   data() {
     return {
       modal: false,
       checked:true,
       stockCodeFlag: true,
-      formItem: {
-          stockcode: '',
-          starttime: '',
-          lasttime: '',
-          xtpid: ''
-      },
+      value1: '',
+      data1: [
+        {
+            "code":"10001",
+            "name":"平安银行"
+        },
+        {
+            "code":"10002",
+            "name":"银行广发"
+        },
+        {
+            "code":"10300",
+            "name":"证券银行"
+        }
+     ],
       width: 0,
       height: 0, 
       sellPar: {
@@ -74,25 +104,13 @@ export default {
             align: "center"
             } 
         ], 
-      tdata: []
+      tdata: [],
+      flag:false
     };
   },
   mounted: function() {
       var self = this;
-   
-      self.$nextTick(function() {
-        setTimeout(function() {
-            for (let i = 0; i < 10; i++) {
-                self.tdata.push({
-                index: "index" + (i + 1),
-                xtpid: 0,
-                cancelxtpid: 7302,
-                errorCode: 5627,
-                errorMessage: 1563,
-                });
-            } 
-        }, 100);
-
+      self.$nextTick(function() {     
         // console.log("成功" + res);
         self.autoTableSize();
         window.addEventListener(
@@ -102,8 +120,9 @@ export default {
             },
             false
             );
-        });
+      });
   },
+//   mixins:[changetable],
   methods: {
     autoTableSize() {
       var self = this;
@@ -114,7 +133,43 @@ export default {
         $(".i-table")
           .parent()
           .height() - 17;
+    },
+    requestdata(value){
+        var self = this;
+        axios.get('./mock/search.json', {}).then((res) => {
+            self.data1 = res.data.result;
+            console.log(res.data.result)
+        })
+    },
+    changetable(){
+            document.querySelector('table').style.width = 0;
+            var lastwidth =$(".ivu-table-tbody tr").eq(1).children("td:last-child").width();
+            $("table colgroup").children("col:last-child").width(lastwidth);
+            console.log(11)
     }
-  } 
+  },
+  watch: {
+      flag(val){
+          setTimeout(()=>{
+              this.changetable()
+          },0)
+      }
+  },
+   created(){
+        var self = this;
+         axios.get('./mock/withdrawal.json', {}).then((res) => {
+             if(res.data.status == "ok"){
+                 self.tdata = res.data.result
+                 self.flag = true
+                //console.log(res.data.result)
+              }
+        }).then(()=>{
+            if(self.flag){
+               self.$nextTick(()=>{
+                   self.changetable();
+               })
+            }
+        })
+    },
 };
 </script>

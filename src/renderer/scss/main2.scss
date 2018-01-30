@@ -357,6 +357,7 @@ i.fa[title]{
     height: 23px;
     flex-shrink: 0;
     background-color: #1e2127;
+    font-size: 12px;
   }
   .tab-table {
     flex: 1;
@@ -431,8 +432,21 @@ i.fa[title]{
 // vv
 .flex-1 {flex:1}
 .flex{ display: flex;}
-
-
+.content-wrapper{
+  background-color: #1e2127;
+}
+.tab-header{
+  font-size: 12px;
+  padding-left: 20px;
+}
+.padding-left-20{
+  padding-left: 20px;
+  font-size: 12px;
+}
+.lh-22{
+  height: 22px;
+  line-height: 22px;
+}
 @import 'modal/skin-dark.scss';
 @import 'select/skin-dark.scss';
 @import 'tab/skin-dark.scss';

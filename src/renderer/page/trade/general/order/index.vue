@@ -51,7 +51,7 @@
             下单
           </div>
           <div class="tab-body">
-            <Form class="y-form" :method="parBuyOrder" :label-width="64">
+            <Form class="y-form y-order" :method="parBuyOrder" :label-width="64">
               <FormItem label="交易市场">
                 <Select class="y-orange" v-model="parBuyOrder.xtpMarketType" disabled size="small">
                   <Option :value='0'>未知</Option>
@@ -101,7 +101,7 @@
                 <Button type="warning" @click="insertOrder" size="small" long>买入</Button>
               </FormItem>
             </Form>
-            <Form class="y-form" :method="parSellOrder" :label-width="64">
+            <Form class="y-form y-order" :method="parSellOrder" :label-width="64">
               <FormItem label="交易市场">
                 <Select class="y-blue" v-model="parSellOrder.xtpMarketType" disabled size="small">
                   <Option :value='0'>未知</Option>
@@ -292,8 +292,8 @@
     </div>
   </div>
 </template> 
-<style lang="scss">
-.y-form.ivu-form {
+<style lang="scss" >
+.y-order.y-form.ivu-form {
   padding: 18px 15px 0;
   .ivu-form-item-label {
     padding: 10px 10px 0px 0;
@@ -309,8 +309,11 @@
     }
   }
 }
-.y-form.ivu-form {
+.y-order.y-form.ivu-form {
   width: 100%;
+}
+.ivu-tabs.ivu-tabs-card > .ivu-tabs-bar .ivu-tabs-tab{
+  padding: 0px 16px 3px;
 }
 </style>
 
@@ -337,7 +340,7 @@ export default {
       },
       parSellOrder: {
         orderXtpId: 0, // XTP系统订单ID，在XTP系统中唯一
-        orderClientId: 0, //报单引用
+        orderClientId: 12, //报单引用
         ticker: "", //合约代码
         xtpMarketType: 1,
         price: 0.0,

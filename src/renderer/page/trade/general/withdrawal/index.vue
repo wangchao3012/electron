@@ -5,9 +5,8 @@
                <div style="min-width:400px">
                   <Form class="y-search y-dark" inline>
                     <FormItem label="XTP ID: ">
-                         <AutoComplete
+                        <AutoComplete
                         v-model="value1"
-                        :search-filter="searchFilter"
                         @on-change="requestdata"
                         class="y-dark"  size="small"
                         style="width:120px">
@@ -26,22 +25,17 @@
                 </div>
             </div>
             <div class="tab-table">
-                <Table class="i-table" :width='width' :height="height" :columns="columns" 
+                <Table class="i-table" v-if="tdata.length" :width='width' :height="height" :columns="columns" 
                 :data="tdata" size="small" :border='true' ref="table"></Table>
             </div>
         </div>
     </div>
 </template>
-<style lang="scss" >
-    
-</style>
-
-
 <script>
 import axios from "axios"
 import { setTimeout } from 'timers';
 
-// import {changetable} from "../../../../mixins/mixin";
+import {changetable} from "../../../../mixins/mixin";
 
 export default {
     computed: {
@@ -110,27 +104,13 @@ export default {
             align: "center"
             } 
         ], 
-      tdata: []
+      tdata: [],
+      flag:false
     };
   },
   mounted: function() {
       var self = this;
-      self.$nextTick(function() {
-        setTimeout(function() {
-            for (let i = 0; i < 10; i++) {
-                self.tdata.push({
-                index: "index" + (i + 1),
-                xtpid: 0,
-                cancelxtpid: 7302,
-                errorCode: 5627,
-                errorMessage: 1563,
-                });
-            } 
-        }, 100);
-        setTimeout(function(){
-             document.querySelector('table').style.width = 0;
-            $("table colgroup").children("col:last-child").width(200);
-        },101)
+      self.$nextTick(function() {     
         // console.log("成功" + res);
         self.autoTableSize();
         window.addEventListener(
@@ -140,9 +120,9 @@ export default {
             },
             false
             );
-        });
+      });
   },
-//   mixins:[changetable],
+  mixins:[changetable],
   methods: {
     autoTableSize() {
       var self = this;
@@ -154,27 +134,36 @@ export default {
           .parent()
           .height() - 17;
     },
-
-
-    searchFilter (value, option) {
-        return  option.toUpperCase().indexOf(value.toUpperCase()) !== -1;
-    },
     requestdata(value){
         var self = this;
         axios.get('./mock/search.json', {}).then((res) => {
             self.data1 = res.data.result;
             console.log(res.data.result)
         })
-        // this.data1 = !value || value.indexOf('@') >= 0 ? [] : [
-        //             value + '@qq.com',
-        //             value + '@sina.com',
-        //             value + '@163.com'
-        // ];
+    },
+    changetable(){
+            document.querySelector('table').style.width = 0;
+            var lastwidth =$(".ivu-table-tbody tr").eq(1).children("td:last-child").width();
+            $("table colgroup").children("col:last-child").width(lastwidth);
+            console.log(11)
     }
   },
+//   watch: {
+//       flag(val){
+//           setTimeout(()=>{
+//               this.changetable()
+//           },0)
+//       }
+//   },
    created(){
         var self = this;
-       
+         axios.get('./mock/withdrawal.json', {}).then((res) => {
+             if(res.data.status == "ok"){
+                 self.tdata = res.data.result
+                 self.flag = true
+                //console.log(res.data.result)
+              }
+        })
     },
 };
 </script>

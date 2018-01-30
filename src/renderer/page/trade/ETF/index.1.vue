@@ -3,7 +3,7 @@
      <div class="content-body-left" style="min-width:220px">
        <div>
          <div class="tab-header">
-           新股申购
+           申购
          </div>
          <div class="tab-body">
             <Form class="y-form" :method="buyPar" :label-width="64">
@@ -13,21 +13,21 @@
                   <Option value="market">上海</Option>
                 </Select>
               </FormItem>
-              <FormItem label="股票代码">
+              <FormItem label="ETF代码">
                 <Input size="small" class="y-orange" v-model="buyPar.code"></Input>
               </FormItem>
              <FormItem label="数量">
                 <InputNumber class="y-orange" v-model="buyPar.num" size="small"></InputNumber>
               </FormItem>
               <FormItem class="y-block">
-                <Button type="warning" @click="buy" size="small" long>新股申购</Button>
+                <Button type="warning" @click="buy" size="small" long>申购</Button>
               </FormItem>
             </Form>
          </div>
        </div>
-       <div>
+       <div style="margin-top:20px">
           <div class="tab-header">
-            配股
+            赎回
           </div>
           <div class="tab-body">
             <Form class="y-form" :method="sellPar" :label-width="64">
@@ -44,57 +44,35 @@
                 <InputNumber class="y-blue" v-model="sellPar.num" size="small"></InputNumber>
               </FormItem>
               <FormItem class="y-block">
-                <Button type="primary" @click="buy2" size="small" long>配股</Button>
+                <Button type="primary" @click="buy2" size="small" long>赎回</Button>
               </FormItem>
             </Form>
           </div>
+        </div>
        </div>
-       <div>
-          <div class="tab-header">
-            国债逆回购
+     <div class="content-body-right">
+       <div class="tab-content">
+          <div class="tab-top">
+               <Form  align="center"  class="y-dark"  inline>
+                  <FormItem label="ETF代码：">
+                      <Input class="y-dark" size="small"  placeholder=""></Input>
+                  </FormItem>
+                  <FormItem label="市场：">
+                    <Select class="y-dark"  style="width:100px" size="small">
+                        <Option value="xjwt">全部</Option>
+                        <Option value="xjwt" >限价委托</Option>
+                    </Select>
+                  </FormItem>
+                  <FormItem>
+                      <Button type="primary" size="small" style="width:60px">查询</Button>
+                  </FormItem>
+                </Form>
           </div>
-          <div class="tab-body">
-            <Form class="y-form" :method="sellPar" :label-width="64">
-              <FormItem label="交易市场">
-                <Select class="y-orange" size="small" v-model="sellPar.market" disabled>
-                  <Option value="market">深圳</Option>
-                  <Option value="market">上海</Option>
-                </Select>
-              </FormItem>
-              <FormItem label="ETF代码">
-                <Input size="small" class="y-orange" v-model="sellPar.code"></Input>
-              </FormItem>
-               <FormItem label="价格">
-                <InputNumber class="y-orange" v-model="sellPar.price" size="small"></InputNumber>
-              </FormItem>
-              <FormItem label="数量">
-                <InputNumber class="y-orange" v-model="sellPar.num" size="small"></InputNumber>
-              </FormItem>
-              <FormItem class="y-block">
-                <Button type="warning" @click="buy2" size="small" long>确定</Button>
-              </FormItem>
-            </Form>
-          </div>
+          <div class="tab-bottom">
+            <Table class="i-table" :width='width' :height="height" :columns="columns8" :data="data7" size="small" :border='true' ref="table"></Table>
+          </div> 
        </div>
      </div>
-      <div class="content-body-right">
-        <div class="tab-wrapper">
-            <div class="tab-bar">
-               <div style="min-width:400px">
-                  <span class="padding-left-20 lh-22">新股申购:</span>
-                  <Form class="y-dark pull-right" inline>
-                    <FormItem>
-                        <Button type="primary" size="small">一键申购</Button>
-                    </FormItem>
-                  </Form>
-                </div>
-            </div>
-            <div class="tab-table">
-                <Table class="i-table" v-if="data7.length" :width='width' :height="height" :columns="columns8" 
-                :data="data7" size="small" :border='true' ref="table"></Table>
-            </div>
-        </div>
-    </div>
    </div>
 </template> 
 <style scoped>
@@ -105,12 +83,9 @@
      height: 22px;
      background-color: #2c3039;
    }
-</style> 
-
+</style>
 <script>
 import socketio from "socket.io-client";
-import {changetable} from "../../../mixins/mixin";
-
 export default {
   data() {
     return {
@@ -128,38 +103,27 @@ export default {
         code: "",
         market:"market",
         num: 0,
-        price:0,
         numCopies: ""
       },
       columns8: [
         {
-          title: "交易市场",
+          title: "序号",
           type: "index",
-          width: 120,
+          width: 70,
           fixed: "left",
-          align: "center"
+          align: "right"
         },
         {
-          title: "申购代码",
+          title: "名称",
           key: "name",
           fixed: "left",
-          width: 120,
-          align: "center"
-          
+          width: 100
         },
         {
-          title: "股票名称",
+          title: "代码",
           key: "show",
-          width: 120,
-          align: "center",
-         
-        },
-        {
-          title: "申购价格",
-          key: "weak",
-          width: 140,
+          width: 100,
           sortable: true,
-          align: "center",          
           filters: [
             {
               label: "Greater than 4000",
@@ -180,18 +144,64 @@ export default {
           }
         },
         {
-          title: "最大允许申购数量",
-          key: "signin",
-          width: 170,
-          sortable: true,
-          align: "center"
+          title: "涨幅",
+          key: "weak",
+          width: 100,
+          sortable: true
         },
         {
-          title: "可申购数量",
+          title: "现价",
+          key: "signin",
+          width: 100,
+          sortable: true
+        },
+        {
+          title: "涨跌",
           key: "click",
-          width: 140,
-          sortable: true,
-          align: "center"
+          width: 100,
+          sortable: true
+        },
+        {
+          title: "总量",
+          key: "active",
+          width: 100,
+          sortable: true
+        },
+        {
+          title: "总金额",
+          key: "day7",
+          width: 100,
+          sortable: true
+        },
+        {
+          title: "换手",
+          key: "day30",
+          width: 100,
+          sortable: true
+        },
+        {
+          title: "今开",
+          key: "tomorrow",
+          width: 100,
+          sortable: true
+        },
+        {
+          title: "最高",
+          key: "day",
+          width: 100,
+          sortable: true
+        },
+        {
+          title: "最低",
+          key: "week",
+          width: 100,
+          sortable: true
+        },
+        {
+          title: "昨收",
+          key: "month",
+          width: 100,
+          sortable: true
         }
       ],
       data7: []
@@ -214,7 +224,7 @@ export default {
   },
   created(){
     var self = this;
-     setTimeout(function() {
+    setTimeout(function() {
         for (let i = 0; i < 6; i++) {
           self.data7.push({
             name: "Name" + (i + 1),
@@ -223,18 +233,34 @@ export default {
             weak: 5627,
             signin: 1563,
             click: 4254,
+            active: 1438,
+            day7: 274,
+            day30: 285,
+            tomorrow: 1727,
+            day: 558,
+            week: 4440,
+            month: 5610
           });
         }
       }, 100);
-   
   },
-    mixins:[changetable],
-
   mounted: function() {
     var self = this;
+    self.$nextTick(function() {
+        // self.width = $(".i-table")
+        //     .parent()
+        //     .width();
+        // self.height =
+        //     $(".i-table")
+        //     .parent()
+        //     .height();
+        // 以下解决表格最后一格不对齐
+        document.querySelector('table').style.width = 0;
+        var lastwidth =$(".ivu-table-tbody tr").eq(1).children("td:last-child").width() ;
+        $("table colgroup").children("col:last-child").width(lastwidth);
+         
+      })
     // console.log("socketId::", this.$socket.id);
-      // console.log("成功" + res);
-      self.autoTableSize();
       window.addEventListener(
         "resize",
         function() {
@@ -242,7 +268,6 @@ export default {
         },
         false
       );
-    
   },
   methods: {
     handleSearch1(value) {
@@ -250,7 +275,6 @@ export default {
     },
     buy() {
       let self = this; 
-
       // self.$socket.close();
       // self.$socket.connect({
       //   query: {
@@ -278,10 +302,15 @@ export default {
     },
     autoTableSize() {
       var self = this;
+      // $(".y-table").width(
+      //   $(".y-table")
+      //     .parent()
+      //     .width() - 5
+      // );
+      //  $(".y-table").height($(".y-table").parent().height() - 5);
       self.width = $(".i-table")
         .parent()
         .width();
-
       self.height =
         $(".i-table")
           .parent()

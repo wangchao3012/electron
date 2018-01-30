@@ -115,7 +115,8 @@
       <div class="tab-bottom">
         <div class="tab-wrapper">
           <div class="tab-bar">
-              <Form class="y-dark" style="padding-left:20px" inline>
+             <span class="padding-left-20 lh-22">分级基金查询</span>
+              <Form class="y-dark pull-right" inline>
                   <FormItem label="母基金查询:">
                       <Input class="y-dark" size="small"></Input>
                   </FormItem>
@@ -149,7 +150,7 @@
   }  
 }  
   .tab-table {
-    height: 500px;
+    height: 400px;
   }
 </style>
 <script>
@@ -321,13 +322,13 @@ export default {
     var self = this;
     // console.log("socketId::", this.$socket.id);
        self.$nextTick(function() {
-        // self.width = $(".i-table")
-        //     .parent()
-        //     .width();
-        // self.height =
-        //     $(".i-table")
-        //     .parent()
-        //     .height();
+        self.width = $(".i-table")
+            .parent()
+            .width();
+        self.height =
+            $(".i-table")
+            .parent()
+            .height();
       })
    
       self.autoTableSize();

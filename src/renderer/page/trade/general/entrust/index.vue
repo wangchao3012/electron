@@ -1,7 +1,7 @@
 <template>
     <div class="content-body-right">
         <div class="tab-wrapper">
-            <div class="tab-bar">
+            <div class="tab-bar" style="overflow:hidden">
                 <RadioGroup v-model="sellPar.numCopies" class="y-black" type="button" size="small">
                     <Radio label="今日委托"></Radio>
                     <Radio label="历史委托"></Radio>
@@ -36,20 +36,20 @@
                 class-name="vertical-center-modal"
                 :mask-closable="false">
                 <div class="mod">
-                       <Row>
-                            <i-col span="4">拖动</i-col>
-                            <i-col span="18">标签名称</i-col>
-                            <i-col span="2">显示</i-col>
-                       </Row>   
-                       <Row v-for="(item, index) in targetname" :key="index">
-                            <i-col span="4"> 
-                              <Icon type="navicon-round" size='22'></Icon>
-                            </i-col>
-                            <i-col span="18">{{item.name}}</i-col>
-                            <i-col span="2">
-                              <Checkbox :checked.sync="checked" class="y-black-checkbox"></Checkbox>
-                            </i-col>
-                      </Row>    
+                    <Row>
+                        <i-col span="4">拖动</i-col>
+                        <i-col span="18">标签名称</i-col>
+                        <i-col span="2">显示</i-col>
+                    </Row>   
+                    <Row v-for="(item, index) in targetname" :key="index">
+                        <i-col span="4"> 
+                          <Icon type="navicon-round" size='22'></Icon>
+                        </i-col>
+                        <i-col span="18">{{item.name}}</i-col>
+                        <i-col span="2">
+                          <Checkbox :checked.sync="checked" class="y-black-checkbox"></Checkbox>
+                        </i-col>
+                  </Row>    
                 </div>
             </Modal>
         </div>
@@ -69,7 +69,6 @@
     height: 22px;
     position: relative;
 }
-
 .ivu-form .ivu-form-item-label{
         padding-top: 0px;
         color: #d0d0d4;
@@ -375,24 +374,24 @@ export default {
           .height() - 17;
     }
   },
-  // watch: {
-  //         code (val) {
-  //             if (val.length >= 6) {
-  //               this.formItem.stockcode = val.slice(0,6)
-  //             }
-  //           }
-  // },
-  // computed: {
-  //   code () {
-  //       return this.formItem.stockcode
-  //   },
-  //   stocksearch () { 
-  //       return this.stockcodekv.filter(v => v.code.indexOf(this.formItem.stockcode) != -1);
-  //   },
-  //   infosearch () {
-  //       return this.tdata.filter(v => v.show.indexOf(this.formItem.stockcode) != -1)
-  //           //    return this.data1.filter(v => v.xtpid.indexOf(this.formItem.xtpid) != -1); 
-  //    }
-  // }
+  watch: {
+    code (val) {
+        if (val.length >= 6) {
+          this.formItem.stockcode = val.slice(0,6)
+        }
+    }
+  },
+  computed: {
+    code () {
+        return this.formItem.stockcode
+    },
+    stocksearch () { 
+        return this.stockcodekv.filter(v => v.code.indexOf(this.formItem.stockcode) != -1);
+    },
+    infosearch () {
+        return this.tdata.filter(v => v.show.indexOf(this.formItem.stockcode) != -1)
+            //    return this.data1.filter(v => v.xtpid.indexOf(this.formItem.xtpid) != -1); 
+     }
+  }
 };
 </script>

@@ -85,7 +85,6 @@
             <a class="pull-right">注册账号 </a>
           </div>
         </div>
-
       </div>
     </Modal>
   </div>
@@ -135,8 +134,8 @@ export default {
       button6: "",
       loading: false,
       parLogin: {
-        username: "",
-        password: ""
+        username: "15001030",
+        password: "aI2p4TiG"
       }
     };
   },
@@ -160,7 +159,6 @@ export default {
     var self = this;
     //       $('.y-tabs > li > a').click(function () {
     // let el=$(this);
-
     // });
     self.ipc = self.$electron && self.$electron.ipcRenderer;
     self.$nextTick(function() {});
@@ -173,7 +171,7 @@ export default {
       self.$socket.emit("login", self.parLogin);
       setTimeout(() => {
         if (self.loading) {
-          self.loading = false;
+          self.loading = false;  
           self.$Message.error(`请求服务器超时！`);
         }
       }, 5000);

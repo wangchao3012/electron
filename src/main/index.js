@@ -92,13 +92,13 @@ app.on('activate', () => {
  */
 
 /**/
-import { autoUpdater } from 'electron-updater'
+// import { autoUpdater } from 'electron-updater'
+// autoUpdater.setFeedURL('');
+// autoUpdater.on('update-downloaded', () => {
+//   autoUpdater.quitAndInstall()
+// })
 
-autoUpdater.on('update-downloaded', () => {
-  autoUpdater.quitAndInstall()
-})
-
-app.on('ready', () => {
-  if (process.env.NODE_ENV === 'production') autoUpdater.checkForUpdates()
-})
+// app.on('ready', () => {
+//   if (process.env.NODE_ENV === 'production') autoUpdater.checkForUpdates()
+// })
 
