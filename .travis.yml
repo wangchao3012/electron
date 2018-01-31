@@ -39,7 +39,7 @@ script:
 #- yarn run pack && xvfb-maybe node_modules/.bin/mocha test/e2e
   - yarn run build
 after_script:
-  - cd ./public
+  - cd ./build
   - git init
   - git config user.name "wangchao3012"
   - git config user.email "wangchao3012@163.com"
