@@ -45,13 +45,21 @@
       ]
     },
     "mac": {
-      "icon": "src/renderer/img/icons/icon.icns"
+      "icon": "src/renderer/img/icons/icon.icns",
+      "target": [
+        "dmg",
+        "zip",
+        "pkg"
+      ]
     },
     "win": {
       "icon": "src/renderer/img/icons/icon.ico"
     },
     "linux": {
-      "icon": "src/renderer/img/icons"
+      "icon": "src/renderer/img/icons",
+      "target": [
+        "apk"
+      ]
     }
   },
   "dependencies": {
