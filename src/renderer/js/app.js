@@ -1,6 +1,6 @@
 // const electron = require('electron')
 // const os = require('os')
- 
+
 
 var app = (function (document, undefined) {
     var $ = function () { };
@@ -12,7 +12,7 @@ var app = (function (document, undefined) {
     };
     $.defaultToken = 'E07657CD6002B363';
     $.post = function (par) {
-        console.log(JSON.stringify(par))
+        console.log('par', JSON.stringify(par))
         // electron.shell.showItemInFolder(os.homedir())
     }
     /**
@@ -38,7 +38,7 @@ var app = (function (document, undefined) {
     //         el.parent().addClass('active');
     //     });
     // }
-    
+
 })(app, jQuery, document, window);
 // y - tabs
 (function ($, doc, win) {
